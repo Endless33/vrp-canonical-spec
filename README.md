@@ -42,6 +42,27 @@ This is the canonical specification defining:
 
 ---
 
+## Quick Demo (Commit Contract)
+
+This repository includes a minimal executable demo of the VRP commit contract.
+
+It demonstrates:
+
+- duplicate mutation rejection
+- non-authority rejection
+- stale epoch rejection
+- single canonical commit
+
+---
+
+### Run locally
+
+```bash
+git clone https://github.com/Endless33/vrp-canonical-spec
+cd vrp-canonical-spec
+go mod init vrp-canonical-spec
+go run ./cmd/private_canonical_contract_demo
+
 ## Key Statement
 
 Correctness is not assumed from the network.
