@@ -1,4 +1,3 @@
-cat > README.md << 'EOF'
 # VRP (Veil Routing Protocol)
 
 VRP is a continuity-first execution model where session identity is independent of transport.
