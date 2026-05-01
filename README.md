@@ -1,3 +1,4 @@
+cat > README.md << 'EOF'
 # VRP (Veil Routing Protocol)
 
 VRP is a continuity-first execution model where session identity is independent of transport.
@@ -33,62 +34,103 @@ This is the canonical specification defining:
 
 ## Specification Documents
 
-- `docs/VRP_CANONICAL_MODEL.md`
-- `docs/VRP_COMMIT_CONTRACT.md`
-- `docs/VRP_AUTHORITY_AND_EPOCHS.md`
-- `docs/VRP_PACKET_BINDING.md`
-- `docs/VRP_REPLAY_SEMANTICS.md`
-- `docs/VRP_INVARIANTS.md`
+- docs/VRP_CANONICAL_MODEL.md
+- docs/VRP_COMMIT_CONTRACT.md
+- docs/VRP_AUTHORITY_AND_EPOCHS.md
+- docs/VRP_PACKET_BINDING.md
+- docs/VRP_REPLAY_SEMANTICS.md
+- docs/VRP_INVARIANTS.md
+- docs/VRP_NETWORK_CHAOS_CONTRACT.md
+- docs/VRP_AUTHORITY_RACE_CONTRACT.md
 
 ---
 
-## Quick Demo: Commit Contract
+## Executable Demos
 
-This repository includes a minimal executable demo of the VRP commit contract.
-
-It demonstrates:
-
-- duplicate mutation rejection
-- non-authority rejection
-- stale epoch rejection
-- single canonical commit
+These demos are not simulations.
+They are executable forms of the specification.
 
 ---
 
-### Run locally
+### 1. Commit Contract
 
-```bash
+go run ./cmd/private_canonical_contract_demo
+
+Proves:
+- duplicate → rejected
+- non-authority → rejected
+- stale epoch → rejected
+- valid → committed once
+
+---
+
+### 2. Network Chaos
+
+go run ./cmd/private_network_chaos_contract_demo
+
+Proves:
+- duplicate packets do not corrupt state
+- dropped packets do not produce inconsistency
+- final state remains valid
+
+---
+
+### 3. Authority Race
+
+go run ./cmd/private_authority_race_demo
+
+Proves:
+- competing authorities produce one canonical decision
+- lower epoch is rejected
+- same epoch conflict is deterministically resolved
+
+---
+
+### 4. Multi-Node Convergence
+
+go run ./cmd/private_multi_node_convergence_demo
+
+Proves:
+- independent runtimes select the same winner
+- decision does not depend on node instance
+
+---
+
+### 5. Disorder + Multi-Node Convergence
+
+go run ./cmd/private_disorder_multi_node_convergence_demo
+
+Proves:
+- different input order does not affect result
+- nodes converge to the same canonical decision
+- disorder does not break determinism
+
+---
+
+## How to Run
+
 git clone https://github.com/Endless33/vrp-canonical-spec
 cd vrp-canonical-spec
 go run ./cmd/private_canonical_contract_demo
 
 ---
 
-Expected behavior
+## Key Statement
 
-ACCEPTED
-REJECTED_DUPLICATE
-REJECTED_NON_AUTHORITY
-REJECTED_STALE_EPOCH
-
-VERDICT: CONSISTENT
-
-This demo is not a simulation.
-It is a minimal executable form of the canonical commit contract.
-
----
-
-Key Statement
 Correctness is not assumed from the network.
+
 Correctness is enforced during execution.
 
 ---
 
-Status
+## Status
+
 Canonical specification in progress.
 
 ---
 
-Author
+## Author
+
 Vitalijus Riabovas
 VRP / Jumping VPN
+EOF
