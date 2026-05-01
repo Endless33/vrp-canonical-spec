@@ -200,6 +200,35 @@ Lost ACCEPTED response:
 
 ---
 
+### Network Disorder (Drop / Duplicate / Reorder)
+
+Unreliable delivery conditions:
+
+→ duplicate packets do not cause double execution  
+→ dropped packets do not produce inconsistent state  
+→ reordered inputs converge to the same result  
+
+---
+
+### Durability Across Restart
+
+Process restart scenario:
+
+→ committed mutations persist across restart  
+→ retry after restart returns canonical result  
+→ state does not mutate twice  
+
+---
+
+### Multi-Node Determinism
+
+Independent runtimes processing same mutations:
+
+→ identical decision sequence  
+→ no divergence between nodes
+
+---
+
 ## How to Run
 
 git clone https://github.com/Endless33/vrp-canonical-spec  
