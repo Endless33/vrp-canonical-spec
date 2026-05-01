@@ -21,6 +21,16 @@ curl -X POST http://127.0.0.1:8080/transfer -H "X-Mutation-ID: test-1"
 
 ---
 
+## Runtime evidence
+
+This is not a unit test.
+
+The proxy enforces correctness at the commit boundary:
+
+![VRP proxy real logs](docs/images/vrp_proxy_real_logs.png)
+
+---
+
 ## Core Thesis
 
 Transport is not the source of truth.
