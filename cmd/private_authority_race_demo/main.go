@@ -16,10 +16,10 @@ type Decision struct {
 type RaceResult string
 
 const (
-	AcceptedWinner       RaceResult = "ACCEPTED_WINNER"
-	RejectedLowerEpoch   RaceResult = "REJECTED_LOWER_EPOCH"
+	AcceptedWinner        RaceResult = "ACCEPTED_WINNER"
+	RejectedLowerEpoch    RaceResult = "REJECTED_LOWER_EPOCH"
 	RejectedLowerPriority RaceResult = "REJECTED_LOWER_PRIORITY"
-	RejectedDuplicate    RaceResult = "REJECTED_DUPLICATE_DECISION"
+	RejectedDuplicate     RaceResult = "REJECTED_DUPLICATE_DECISION"
 )
 
 type EvaluatedDecision struct {
@@ -71,15 +71,6 @@ func (r *Runtime) Resolve(decisions []Decision) []EvaluatedDecision {
 			continue
 		}
 
-		if r.committed[d.Mutation] {
-			results = append(results, EvaluatedDecision{
-				Decision: d,
-				Result:   RejectedDuplicate,
-				Reason:   "mutation already has a canonical decision",
-			})
-			continue
-		}
-
 		if d.Epoch < winner.Epoch {
 			results = append(results, EvaluatedDecision{
 				Decision: d,
@@ -94,6 +85,15 @@ func (r *Runtime) Resolve(decisions []Decision) []EvaluatedDecision {
 				Decision: d,
 				Result:   RejectedLowerPriority,
 				Reason:   "same epoch conflict resolved by deterministic priority",
+			})
+			continue
+		}
+
+		if r.committed[d.Mutation] {
+			results = append(results, EvaluatedDecision{
+				Decision: d,
+				Result:   RejectedDuplicate,
+				Reason:   "mutation already has a canonical decision",
 			})
 			continue
 		}
