@@ -69,6 +69,18 @@ Correctness is not assumed from the network.
 
 Correctness is enforced during execution.
 
+Expected behavior
+
+ACCEPTED
+REJECTED_DUPLICATE
+REJECTED_NON_AUTHORITY
+REJECTED_STALE_EPOCH
+
+VERDICT: CONSISTENT
+
+This demo is not a simulation.
+It is a minimal executable form of the canonical commit contract.
+
 ---
 
 ## Status
