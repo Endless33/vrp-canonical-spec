@@ -1,3 +1,14 @@
+# VRP (Veil Routing Protocol)
+
+VRP is an execution correctness layer for unreliable networks.
+
+It ensures that session identity and state transitions remain correct
+even when the network duplicates, drops, reorders, or reroutes packets.
+
+This repository defines the canonical specification of VRP.
+
+---
+
 Try it now:
 
 go run ./cmd/vrp_proxy
@@ -7,17 +18,6 @@ curl -X POST http://127.0.0.1:8080/transfer -H "X-Mutation-ID: test-1"
 
 → first request accepted
 → second request rejected
-
----
-
-# VRP (Veil Routing Protocol)
-
-VRP is an execution correctness layer for unreliable networks.
-
-It ensures that session identity and state transitions remain correct
-even when the network duplicates, drops, reorders, or reroutes packets.
-
-This repository defines the canonical specification of VRP.
 
 ---
 
