@@ -18,7 +18,7 @@ This repository defines the canonical specification of VRP.
 
 ## What This Repository Contains
 
-This is not an implementation.
+This is not a production implementation.
 
 This is the canonical specification defining:
 
@@ -42,7 +42,7 @@ This is the canonical specification defining:
 
 ---
 
-## Quick Demo (Commit Contract)
+## Quick Demo: Commit Contract
 
 This repository includes a minimal executable demo of the VRP commit contract.
 
@@ -60,14 +60,9 @@ It demonstrates:
 ```bash
 git clone https://github.com/Endless33/vrp-canonical-spec
 cd vrp-canonical-spec
-go mod init vrp-canonical-spec
 go run ./cmd/private_canonical_contract_demo
 
-## Key Statement
-
-Correctness is not assumed from the network.
-
-Correctness is enforced during execution.
+---
 
 Expected behavior
 
@@ -83,12 +78,17 @@ It is a minimal executable form of the canonical commit contract.
 
 ---
 
-## Status
-
-Canonical specification (in progress)
+Key Statement
+Correctness is not assumed from the network.
+Correctness is enforced during execution.
 
 ---
 
-## Author
+Status
+Canonical specification in progress.
 
+---
+
+Author
+Vitalijus Riabovas
 VRP / Jumping VPN
