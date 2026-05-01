@@ -50,17 +50,15 @@ func runScenario(name string, runtime *Runtime, inputs []Input) []Decision {
 }
 
 func main() {
-	fmt.Println("=== VRP MULTI-NODE PROXY-LIKE DEMO ===")
-	fmt.Println("Invariant: different order → same outcome")
+	fmt.Println("=== VRP MULTI-NODE DEMO ===")
+	fmt.Println("Invariant: independent runtimes must produce same decisions")
 	fmt.Println()
 
-	// same logical events
 	inputsA := []Input{
 		{MutationID: "payment-001"},
 		{MutationID: "payment-001"},
 	}
 
-	// reordered (same content, different arrival pattern)
 	inputsB := []Input{
 		{MutationID: "payment-001"},
 		{MutationID: "payment-001"},
@@ -83,10 +81,8 @@ func main() {
 
 	if same {
 		fmt.Println("CONSISTENT")
-		fmt.Println("Proof: independent runtimes produced identical decisions")
+		fmt.Println("Proof: both nodes made identical decisions")
 	} else {
 		fmt.Println("VIOLATION")
 	}
-
-	fmt.Println()
 }
