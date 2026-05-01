@@ -31,6 +31,24 @@ The proxy enforces correctness at the commit boundary:
 
 ---
 
+## Runtime evidence
+
+This screenshot is illustrative.
+
+You can reproduce the same behavior locally:
+
+```bash
+go run ./cmd/vrp_proxy
+
+curl -X POST http://127.0.0.1:8080/transfer -H "X-Mutation-ID: test-1"
+curl -X POST http://127.0.0.1:8080/transfer -H "X-Mutation-ID: test-1"
+
+Expected result:
+first request → accepted
+second request → rejected
+
+---
+
 ## Core Thesis
 
 Transport is not the source of truth.
