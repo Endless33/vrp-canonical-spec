@@ -1,3 +1,15 @@
+Try it now:
+
+go run ./cmd/vrp_proxy
+
+curl -X POST http://127.0.0.1:8080/transfer -H "X-Mutation-ID: test-1"
+curl -X POST http://127.0.0.1:8080/transfer -H "X-Mutation-ID: test-1"
+
+→ first request accepted
+→ second request rejected
+
+---
+
 # VRP (Veil Routing Protocol)
 
 VRP is an execution correctness layer for unreliable networks.
