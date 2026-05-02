@@ -283,3 +283,19 @@ Canonical specification in progress.
 
 Vitalijus Riabovas  
 VRP / Jumping VPN
+
+---
+
+## Intellectual Origin
+
+VRP (Veil Routing Protocol) is an original protocol concept and architecture
+developed by Vitalijus Riabovas.
+
+This repository defines its canonical specification, invariants,
+and executable behavioral model.
+
+The protocol design, execution semantics, and commit-boundary model
+represent independent research and development.
+
+If you build upon or reference this work,
+proper attribution is expected.
